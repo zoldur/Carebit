@@ -88,7 +88,7 @@ daemon=1
 port=$COIN_PORT
 testnet=0
 EOF
-:wq}
+}
 
 function create_key() {
   echo -e "Enter your ${RED}$COIN_NAME Masternode Private Key${NC}. Leave it blank to generate a new ${RED}Masternode Private Key${NC} for you:"
@@ -203,7 +203,7 @@ apt-get update >/dev/null 2>&1
 apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
 build-essential libtool autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
 libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
-libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++>/dev/null 2>&1
+libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ >/dev/null 2>&1
 if [ "$?" -gt "0" ];
   then
     echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
@@ -228,7 +228,7 @@ function important_information() {
  echo -e "VPS_IP:PORT ${RED}$NODEIP:$COIN_PORT${NC}"
  echo -e "MASTERNODE PRIVATEKEY is: ${RED}$COINKEY${NC}"
  echo -e "Please check ${RED}$COIN_NAME${NC} daemon is running with the following command: ${RED}systemctl status $COIN_NAME.service${NC}"
- echo -e "Use ${RED}$COIN_CLI masternode status${NC}" to check your MN. A running MN will show ${RED}status 9${NC}.
+ echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN. A running MN will show ${RED}Status 9${NC}."
  echo -e "================================================================================================================================"
 }
 
@@ -250,3 +250,4 @@ checks
 prepare_system
 download_node
 setup_node
+

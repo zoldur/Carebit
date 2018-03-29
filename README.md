@@ -56,7 +56,7 @@ systemctl is-enabled Carebit #To check if Carebit service is enabled on boot
 
 ## Known issues
 
-1. If your wallet does not sync, please add the following nodes to Carebit.conf. On Windows full path is **%APPDATA%\Carebit**.
+1. If your wallet does not sync, please add the following nodes to Carebit.conf. On Windows the full path is **%APPDATA%\Carebit**
 ```
 addnode=159.65.84.183
 addnode=167.99.204.45

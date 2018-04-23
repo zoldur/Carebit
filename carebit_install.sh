@@ -1,8 +1,8 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='carebit.conf'
-CONFIGFOLDER='/root/.carebitcore'
+CONFIG_FILE='carebitcoin.conf'
+CONFIGFOLDER='/root/.carebitcoin'
 COIN_DAEMON='carebitcoind'
 COIN_CLI='carebitcoin-cli'
 COIN_PATH='/usr/local/bin/'
@@ -28,7 +28,7 @@ function download_node() {
   unzip $COIN_ZIP >/dev/null 2>&1
   compile_error
   cd linux
-  cp $COIN_DAEMON $COIN_REPO $COIN_PATH
+  cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   chmod +x $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
@@ -226,7 +226,7 @@ function important_information() {
  echo -e "VPS_IP:PORT ${RED}$NODEIP:$COIN_PORT${NC}"
  echo -e "MASTERNODE PRIVATEKEY is: ${RED}$COINKEY${NC}"
  echo -e "Please check ${RED}$COIN_NAME${NC} daemon is running with the following command: ${RED}systemctl status $COIN_NAME.service${NC}"
- echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN. A running MN will show ${RED}Status 9${NC}."
+ echo -e "Use ${RED}$COIN_CLI masternode status${NC} to check your MN."
  echo -e "================================================================================================================================"
 }
 

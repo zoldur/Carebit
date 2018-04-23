@@ -1,16 +1,16 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='Carebit.conf'
-CONFIGFOLDER='/root/.Carebit'
-COIN_DAEMON='Carebitd'
-COIN_CLI='Carebitd'
+CONFIG_FILE='carebit.conf'
+CONFIGFOLDER='/root/.carebitcore'
+COIN_DAEMON='carebitcoind'
+COIN_CLI='carebitcoin-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_REPO='https://github.com/PaMajju/Carebit-Coin/files/1854917/Carebitd-.Linux_Daemon.tar.gz'
+COIN_REPO='https://github.com/PaMajju/CareBitCoinCore/releases/download/v2.0.0.0/linux.zip'
 COIN_ZIP=$(echo $COIN_REPO | awk -F'/' '{print $NF}')
 COIN_NAME='Carebit'
-COIN_PORT=26318
-RPC_PORT=26317
+COIN_PORT=9191
+RPC_PORT=9292
 
 NODEIP=$(curl -s4 icanhazip.com)
 
@@ -25,9 +25,12 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_REPO
   compile_error
-  tar xvzf $COIN_ZIP -C /usr/local/bin >/dev/null 2>&1
+  unzip $COIN_ZIP >/dev/null 2>&1
   compile_error
-  cd - >/dev/null 2>&1
+  cd linux
+  cp $COIN_DAEMON $COIN_REPO $COIN_PATH
+  chmod +x $COIN_PATH$COIN_DAEMON $COIN_PATH$COIN_CLI
+  cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
 }
 
@@ -119,13 +122,8 @@ logintimestamps=1
 maxconnections=256
 #bind=$NODEIP
 masternode=1
-masternodeaddr=$NODEIP:$COIN_PORT
+externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-addnode=159.65.84.183
-addnode=167.99.204.45
-addnode=167.99.204.49
-addnode=167.99.204.53
-addnode=167.99.91.226
 EOF
 }
 

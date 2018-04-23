@@ -18,31 +18,31 @@ After the MN is up and running, you need to configure the desktop wallet accordi
 4. Wait for 15 confirmations.  
 5. Go to **Help -> "Debug Window - Console"**  
 6. Type the following command: **masternode outputs**  
-7. Go to **Masternodes** tab  
-8. Click **Create** and fill the details:  
-* Alias: **MN1**  
-* Address: **VPS_IP:PORT**  
-* Privkey: **Masternode Private Key**  
-* TxHash: **First value from Step 6**  
-* Output index:  **Second value from Step 6**  
-* Reward address: leave blank  
-* Reward %: leave blank  
-9. Click **OK** to add the masternode  
-11. Close and open the wallet again.
-12. Go to **Masternodes** -> **My Master Nodes** tab
-13. If you don't see your masternode, click **Update**
-14. Unlock your wallet if it is encrypted
-15. Select your masternode and click on **Start**
-16. Login to your VPS and check your masternode status by running the following command. If you get **Status 9**, it means your masternode is active.
+7. Go to  **Tools -> "Open Masternode Configuration File"**
+8. Add the following entry:
 ```
-Carebitd masternode status
+Alias Address Privkey TxHash TxIndex
+```
+* Alias: **MN1**
+* Address: **VPS_IP:PORT**
+* Privkey: **Masternode Private Key**
+* TxHash: **First value from Step 6**
+* TxIndex:  **Second value from Step 6**
+9. Save and close the file.
+10. Go to **Masternode Tab**. If you tab is not shown, please enable it from: **Settings - Options - Wallet - Show Masternodes Tab**
+11. Click **Update status** to see your node. If it is not shown, close the wallet and start it again. Make sure the wallet is un
+12. Select your MN and click **Start Alias** to start it.
+13. Login to your VPS and check your masternode status by running the following command. If you get **Status 9**, it means your masternode is active.
+```
+carebitcoin-cli masternode status
 ```
 ***
 
 ## Usage:
 ```
-Carebitd masternode status  
-Carebitd getinfo
+carebitcoin-cli mnsync status
+carebitcoin-cli masternode status  
+carebitcoin-cli getinfo
 ```
 Also, if you want to check/start/stop **Carebit**, run one of the following commands as **root**:
 
@@ -54,23 +54,10 @@ systemctl is-enabled Carebit #To check if Carebit service is enabled on boot
 ```  
 ***
 
-## Known issues
-
-1. If your wallet does not sync, please add the following nodes to Carebit.conf. On Windows the full path is **%APPDATA%\Carebit**
-```
-addnode=159.65.84.183
-addnode=167.99.204.45
-addnode=167.99.204.49
-addnode=167.99.204.53
-addnode=167.99.91.226
-```
-***
-
 ## Donations
 
 Any donation is highly appreciated  
 
-**CBT**: CTijMUhgQFw6P9zq5UeeARB6TPXQq92iQD  
 **BTC**: 3MQLEcHXVvxpmwbB811qiC1c6g21ZKa7Jh  
 **ETH**: 0x26B9dDa0616FE0759273D651e77Fe7dd7751E01E  
 **LTC**: LNZpK4rCd1JVSB3rGKTAnTkudV9So9zexB  

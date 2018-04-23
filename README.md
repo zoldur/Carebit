@@ -32,7 +32,11 @@ Alias Address Privkey TxHash TxIndex
 10. Go to **Masternode Tab**. If you tab is not shown, please enable it from: **Settings - Options - Wallet - Show Masternodes Tab**
 11. Click **Update status** to see your node. If it is not shown, close the wallet and start it again. Make sure the wallet is un
 12. Select your MN and click **Start Alias** to start it.
-13. Login to your VPS and check your masternode status by running the following command. If you get **Status 9**, it means your masternode is active.
+13. Alternatively, open **Debug Console** and type:
+```
+masternode start-alias MN1
+``` 
+14. Login to your VPS and check your masternode status by running the following command. If you get **Status 9**, it means your masternode is active.
 ```
 carebitcoin-cli masternode status
 ```

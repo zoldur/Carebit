@@ -14,7 +14,7 @@ bash carebit_install.sh
 After the MN is up and running, you need to configure the desktop wallet accordingly. Here are the steps:  
 1. Open the Carebit Desktop Wallet.  
 2. Go to RECEIVE and create a New Address: **MN1**  
-3. Send **30000** CBT to **MN1**. You need to send all 30000 coins in one single transaction.
+3. Send **30000** CARE to **MN1**. You need to send all 30000 coins in one single transaction.
 4. Wait for 15 confirmations.  
 5. Go to **Help -> "Debug Window - Console"**  
 6. Type the following command: **masternode outputs**  
